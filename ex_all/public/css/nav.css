@@ -1,0 +1,21 @@
+.brand-link{
+    text-align: center;
+    transition: none !important;
+}
+.d-none{
+    display: inline-block !important;
+}
+.main-header{
+    
+    background-color: #343a40 !important;
+}
+.nav-link{
+    color: #FFFFFF !important;
+}
+.nav-treeview{
+    background: #4b545c !important;
+    border-radius: 5px !important;
+}
+.active{
+    background-color: #007bff !important;
+}

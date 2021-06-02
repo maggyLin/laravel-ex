@@ -1,0 +1,57 @@
+h1{
+    width: 100%;
+    text-align: center;
+    font-size: 30px;
+    margin-bottom: 0px;
+}
+h4{
+    width: 100%;
+    text-align: center;
+    font-size: 14px;
+    margin: 0 0 20px 0;
+}
+p{
+    text-align: center;
+    color: red;
+}
+.formDiv{
+    display: flex; 
+    flex-direction: row;
+    justify-content: center;
+}
+input{
+    width: 250px;
+    height: 25px;
+    line-height: 25px;
+    font-size: 14px;
+    padding: 5px;
+    margin: 10px;
+    border-radius: 3px;
+    text-indent: 5px;
+    display: block;
+    border: 1px solid #ced4da;
+    caret-color: rgb(232, 240, 254);
+    caret-color: #000000; /* 指定色 */
+    outline: none; /* 外框效果 */
+}
+input[type="submit"]{
+    width: 260px;
+    height: 35px;
+    line-height: 25px;
+    font-size: 16px;
+    background-color: #007bff;
+    border-color: #007bff;
+    color: #FFFFFF;
+}
+input[type="button"]{
+    width: 260px;
+    height: 35px;
+    line-height: 25px;
+    font-size: 16px;
+    background-color: #007bff;
+    border-color: #007bff;
+    color: #FFFFFF;
+}
+.goLogin,.signup{
+    cursor: pointer;
+}
