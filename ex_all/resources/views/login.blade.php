@@ -31,7 +31,7 @@
             <input type="text" name="account" required class="text" placeholder="帳號" maxlength=15/>
             <input type="password" name="password" required class="text" placeholder="密碼" maxlength=15/>
             <input class="goLogin" type="submit" value="登  入"/>
-            {{-- <a href="signup"><input class="signup" type="button" value="註  冊"/></a> --}}
+            <a href=""><input class="signup" type="button" value="註  冊"/></a>
         </form>
     </div>
 

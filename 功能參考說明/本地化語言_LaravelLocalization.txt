@@ -1,0 +1,56 @@
+1.安裝套件
+composer require mcamara/laravel-localization
+
+2.設定支持語言
+config/laravellocalization.php -> 配置文件中的 supportedLocales 制定了项目支持的语言
+
+3.route增加相對應語言的prefix LaravelLocalization::setLocale
+Route::group(['prefix' => LaravelLocalization::setLocale()], function() {
+    route::get('/', function () {
+        return view('welcome');
+    });
+});
+
+4.app/Http/Kernel.php 新增middleware
+protected $routeMiddleware = [
+    /**** OTHER MIDDLEWARE ****/
+    'localize'                => \Mcamara\LaravelLocalization\Middleware\LaravelLocalizationRoutes::class,
+    'localizationRedirect'    => \Mcamara\LaravelLocalization\Middleware\LaravelLocalizationRedirectFilter::class,
+    'localeSessionRedirect'   => \Mcamara\LaravelLocalization\Middleware\LocaleSessionRedirect::class,
+    'localeCookieRedirect'    => \Mcamara\LaravelLocalization\Middleware\LocaleCookieRedirect::class,
+    'localeViewPath'          => \Mcamara\LaravelLocalization\Middleware\LaravelLocalizationViewPath::class
+];
+
+5.You may add middleware to your group like this:
+Route::group(
+[
+	'prefix' => LaravelLocalization::setLocale(),
+	'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath' ]
+], function(){});
+
+6.動應語言系資料檔案放在 resouces/lang 對應資料夾
+return [
+    'title' => '這是標題',
+];
+
+7.view 動應使用 參考langtest.blade.php
+@lang('lang資料夾對應語言內的檔案名稱.keyname') , EX: @lang('langtest.title') 
+
+8.php 內使用
+echo __('langtest.title');
+**如果指定的翻译字符串不存在，那么 __ 函数会直接返回该翻译字符串的键名。@lang不會
+
+9.獲取目前語言名稱
+*LaravelLocalization::getCurrentLocaleName()  -> 繁體中文 (config/laravellocalization中對應name)
+
+*獲取  (config/laravellocalization中對應key name)
+$locale = App::getLocale();
+if (App::isLocale('en')) {}
+
+10.參考資料
+*https://github.com/mcamara/laravel-localization
+*https://learnku.com/courses/laravel-package/2019/laravel-localization-enhancement-mcamaralaravel-localization/2357
+*https://learnku.com/docs/laravel/7.x/localization/7471
+
+
+

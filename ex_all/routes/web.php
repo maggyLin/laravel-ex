@@ -13,6 +13,24 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+//LaravelLocalization example
+Route::group(
+[
+    'prefix' => LaravelLocalization::setLocale(),
+    'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath' ]
+], function(){
+
+    Route::get('lang_test', function () {
+        return view('langtest');
+    });
+
+    //直接印出對應語言內容
+    Route::get('lang_test2', function () {
+        echo __('langtest.title');
+    });
+
+});
+
 Route::get('/', function () {
     return view('login');
 });
