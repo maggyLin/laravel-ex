@@ -13,6 +13,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/', function () {
+    return view('login');
+});
+
+Route::get('home', function () {
+    return view('home');
+});
+
 //LaravelLocalization example
 Route::group(
 [
@@ -31,10 +39,15 @@ Route::group(
 
 });
 
-Route::get('/', function () {
-    return view('login');
+//Log example
+Route::group(
+    [
+        'middleware' => [ 'log']
+    ], function(){
+    
+        Route::get('log_test', function () {
+            return view('logtest');
+        });
+        
 });
 
-Route::get('home', function () {
-    return view('home');
-});

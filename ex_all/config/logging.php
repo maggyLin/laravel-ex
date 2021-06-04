@@ -35,6 +35,15 @@ return [
     */
 
     'channels' => [
+
+        //自定義接收api log
+        'api_received' => [
+            'driver' => 'daily',
+            'path' => storage_path('logs/api_received.log'),
+            'level' => 'debug',
+            'days' => 14,
+        ],
+        
         'stack' => [
             'driver' => 'stack',
             'channels' => ['single'],

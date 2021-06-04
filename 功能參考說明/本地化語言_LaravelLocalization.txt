@@ -28,7 +28,7 @@ Route::group(
 	'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath' ]
 ], function(){});
 
-6.動應語言系資料檔案放在 resouces/lang 對應資料夾
+6.對應語言系資料檔案放在 resources/lang 對應資料夾
 return [
     'title' => '這是標題',
 ];
@@ -38,7 +38,7 @@ return [
 
 8.php 內使用
 echo __('langtest.title');
-**如果指定的翻译字符串不存在，那么 __ 函数会直接返回该翻译字符串的键名。@lang不會
+**如果指定的翻譯字符串不存在，那么 __ 函数会直接返回该翻译字符串的键名。@lang不會
 
 9.獲取目前語言名稱
 *LaravelLocalization::getCurrentLocaleName()  -> 繁體中文 (config/laravellocalization中對應name)

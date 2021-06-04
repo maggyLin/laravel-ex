@@ -71,5 +71,8 @@ class Kernel extends HttpKernel
         'localeCookieRedirect'  => \Mcamara\LaravelLocalization\Middleware\LocaleCookieRedirect::class,
         'localeViewPath'        => \Mcamara\LaravelLocalization\Middleware\LaravelLocalizationViewPath::class,
 
+        //Log
+        'log' => \App\Http\Middleware\LogRecords::class,
+
     ];
 }

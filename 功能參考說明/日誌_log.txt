@@ -1,0 +1,10 @@
+1.config/logging.php ，使用預設 或是 自訂 channel (EX:api_received)
+
+2.呼叫使用參考 Middleware/LogRecords.php
+EX: Log::channel('api_received')->debug('ip => ' . request()->ip());
+
+3.log 位置 
+'path' => storage_path('logs/api_received.log') -> storage/logs
+
+4.詳細參數參考
+https://learnku.com/docs/laravel/7.x/logging/7469
