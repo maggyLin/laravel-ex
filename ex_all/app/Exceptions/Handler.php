@@ -4,6 +4,8 @@ namespace App\Exceptions;
 
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Throwable;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Http\Response;
 
 class Handler extends ExceptionHandler
 {
@@ -50,6 +52,34 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Throwable $exception)
     {
+        
+        // 讓它顯示一下是哪一個異常狀況
+        // dd($exception);
+
+        //使用者請求回傳JSON 格式，發現有 ModelNotFoundException 錯誤被拋出，回傳 404 Not Found 並附上錯誤資訊。
+        // if ($request->expectsJson()) {
+        //     if ($exception instanceof ModelNotFoundException) {
+        //         return response()->json(
+        //             [
+        //                 'message' => '找不到資源'
+        //             ],
+        //             Response::HTTP_NOT_FOUND
+        //         );
+        //     }
+        // }
+        
+        // 發現有 ModelNotFoundException 錯誤被拋出，回傳 404 Not Found 並附上錯誤資訊。
+        if ($exception instanceof ModelNotFoundException) {
+            return response()->json(
+                [
+                    'message' => '找不到資源'
+                ],
+                Response::HTTP_NOT_FOUND
+            );
+        }
+
+        
+        //採用預設 response
         return parent::render($request, $exception);
     }
 }
