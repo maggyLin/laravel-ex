@@ -2,7 +2,7 @@
 composer require mcamara/laravel-localization
 
 2.設定支持語言
-config/laravellocalization.php -> 配置文件中的 supportedLocales 制定了项目支持的语言
+config/laravellocalization.php -> 配置文件中的 supportedLocales 設定支持語言
 
 3.route增加相對應語言的prefix LaravelLocalization::setLocale
 Route::group(['prefix' => LaravelLocalization::setLocale()], function() {
@@ -28,10 +28,7 @@ Route::group(
 	'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath' ]
 ], function(){});
 
-6.對應語言系資料檔案放在 resources/lang 對應資料夾
-return [
-    'title' => '這是標題',
-];
+6.對應語言系資料(翻譯)檔案放在 resources/lang 資料夾 
 
 7.view 動應使用 參考langtest.blade.php
 @lang('lang資料夾對應語言內的檔案名稱.keyname') , EX: @lang('langtest.title') 

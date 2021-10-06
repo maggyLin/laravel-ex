@@ -46,7 +46,7 @@ class RouteServiceProvider extends ServiceProvider
 
         $this->mapWebRoutes();
 
-        //
+        $this->mapTestRoutes();
     }
 
     /**
@@ -77,4 +77,25 @@ class RouteServiceProvider extends ServiceProvider
             ->namespace($this->namespace)
             ->group(base_path('routes/api.php'));
     }
+
+    // 自定義 test 
+    protected function mapTestRoutes()
+    {
+        Route::prefix('test')  //前綴 = url/test
+            ->middleware('web')  //同web路由
+            ->namespace($this->namespace)
+            // ->domain(config('app.domain'))  //是否要對應網域名稱
+            ->group(base_path('routes/test.php'));
+
+        //其他寫法
+        // Route::group([
+        //     'domain'     => config('app.domain'),
+        //     'middleware' => 'web',
+        //     'namespace'  => $this->namespace,
+        // ], function ($router) {
+        //     require base_path('routes/test.php');
+        // });
+    }
+
+
 }

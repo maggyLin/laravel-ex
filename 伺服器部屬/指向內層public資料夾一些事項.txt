@@ -1,0 +1,27 @@
+(1) lnmp對於跨站點的權限設定非常嚴格
+所以除了一般的.user.ini裡面限制open_basedir
+在fastcgi.conf裡面也會設定一次大家都要聽他的open_basedir
+
+所以就算改了.user.ini的設定，vhost還是會吃fastcgi.conf的設定(難怪一直試.user.ini都沒成功)
+在網路上有看到說 fastcgi.conf中的設置是用來防.user.ini的bug的
+
+(2)所以如果不想防跨站點這類的設定
+除了刪除.user.ini，還要把fastcgi.conf裡面的open_basedir給註解掉或整行刪除
+
+(3)在Thinkphp，codeigniter，Laravel等框架下，網站目錄通常是在public下，但是public下的程序要跨目錄調用public上一層目錄下的檔案，因為LNMP預設是不允許跨目錄訪問的，所以必須要將防跨目錄訪問的設定註解，有時候這些框架類的程序提示500錯誤也可能是這個問題引起的。
+
+
+(4)另外，如果直接把fastcgi.conf裡面的open_basedir直接寫死到/home/wwwroot/testbacken/public
+其實應該不是所有網站會掛掉
+應該是會所有的網站都會呈現同樣的畫面(因為強迫資料夾路徑一樣)
+但因為我們昨天用在public 網站依樣沒辦法讀取上一層的目錄
+所以亭於昨天才會說網頁壞掉 因為他看到的應該就是因為權限不夠而報的500
+
+(5)我後來試成功的設定
+在fastcgi.conf最底下新增一句 fastcgi_param PHP_ADMIN_VALUE $basedir if_not_empty;
+跟vhost.conf裡面新增的set $basedir "open_basedir=/home/wwwroot/testbackend/:/tmp/:/proc/";
+這兩句是要同時存在的，缺一不可 因為會找不到變數$basedir
+
+
+參考資料:
+https://codertw.com/%E7%A8%8B%E5%BC%8F%E8%AA%9E%E8%A8%80/93357/

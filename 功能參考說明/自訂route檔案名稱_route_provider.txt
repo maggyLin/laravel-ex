@@ -1,0 +1,7 @@
+1.使用 app/Providers/RouteServiceProvider.php 自定義route對應資訊與檔案
+* map() ->目前使用路由
+* 定義使用路由資訊 ( ex: mapTestRoutes() )
+
+2. routes 資料夾創對應檔案
+
+3. 請參考 routes/test.php
