@@ -46,6 +46,7 @@ class RouteServiceProvider extends ServiceProvider
 
         $this->mapWebRoutes();
 
+        //自定義 test route
         $this->mapTestRoutes();
     }
 
@@ -78,7 +79,7 @@ class RouteServiceProvider extends ServiceProvider
             ->group(base_path('routes/api.php'));
     }
 
-    // 自定義 test 
+    // 自定義 test route
     protected function mapTestRoutes()
     {
         Route::prefix('test')  //前綴 = url/test

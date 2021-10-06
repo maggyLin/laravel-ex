@@ -21,6 +21,7 @@ Route::get('home', function () {
     return view('home');
 });
 
+
 //LaravelLocalization example
 Route::group(
 [
@@ -39,14 +40,21 @@ Route::group(
 
 });
 
+
 //Log example
+//log - storage/logs 
+//userLog - for user and store in sql user_logs table
 Route::group(
     [
-        'middleware' => [ 'log']
+        'middleware' => [ 'log','userlog']
     ], function(){
     
         Route::get('log_test', function () {
             return view('logtest');
+        })->name("log_test");
+
+        Route::get('log_test_2', function () {
+            return "This is log test 2.";
         });
         
 });
