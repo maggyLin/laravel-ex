@@ -10,7 +10,7 @@
 @section('content')
 
     <h1 style="padding: 20px;">
-        歡迎進入後台系統
+        {{ $user }} 歡迎進入後台系統 
     </h1>
 
 @endsection

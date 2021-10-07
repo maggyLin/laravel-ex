@@ -16,10 +16,13 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('login');
 });
+// 使用自定義password規則(rule)
+Route::post('/','UserController@loginCheck')->name('loginCheck');
+
 
 Route::get('home', function () {
     return view('home');
-});
+})->name("home");
 
 
 //LaravelLocalization example

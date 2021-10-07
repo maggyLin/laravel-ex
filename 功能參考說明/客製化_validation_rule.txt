@@ -1,0 +1,6 @@
+*客製化 validation rule , 使用 route web.php 內 login 登入範例,客製化 password 檢查 (通常註冊使用)
+web.php -> Route::post('/','UserController@loginCheck')->name('loginCheck');
+
+1.app/Rules -> 制定 rules 內容，參考 PasswordStrength.php
+
+2.此範例登入使用 app/Requests/LoginForm.php ->此檔案use
